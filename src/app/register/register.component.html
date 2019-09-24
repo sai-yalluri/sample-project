@@ -1,0 +1,50 @@
+<span>register here!</span>
+
+<div class="container-fluid mb -5">
+    <form #regForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+
+        {{regForm.form.valid}}   
+
+        <!--  <hr> 
+        {{regForm.value|json}}
+        <hr>
+        {{userModel|json}} -->
+<!--
+        <div ngModelGroup="address">
+                <div class="form-group">
+                street:<input type="text" class="form-control" name="street" ngModel>
+                </div>
+
+                <div class="form-group">
+                city:<input type="text" class="form-control" name="city" ngModel>
+                </div>
+
+                <div class="form-group">
+                country:<input type="text" class="form-control" name="country" ngModel>
+                </div>
+
+        </div>
+
+        -->
+        <div class="form-group">
+            Name:<input type="text" required #name ="ngModel" class="form-control" [class.is-invalid]="name.invalid && name.touched" name="userName" [(ngModel)]="userModel.userName">
+            <small class="text-danger" [class.d-none]="name.valid||name.untouched">name is required</small>
+        </div>
+        <div class="form-group">
+                Email:<input type="email" #email="ngModel" [class.is-invalid]="email.invalid && email.touched" class="form-control" name="emailId" [(ngModel)]="userModel.emailId" required>
+                <small class="text-danger" [class.d-none]="email.valid||email.untouched">email is required</small>
+        </div>
+
+        <div class="form-group">
+            Password:<input type="password" required #password="ngModel" pattern="^\d{10}$" class="form-control" [class.is-invalid]="password.invalid && password.touched" name="password" [(ngModel)]="userModel.password">
+             <div *ngIf="password.errors && (password.invalid ||password.touched)">
+             
+                <small class="text-danger" *ngIf="password.errors.pattern" >password should meet specified contraints </small>
+                <small class="text-danger" *ngIf="password.errors.required" >password is required</small>
+            </div>  
+        </div>
+        <button [disabled]="regForm.form.invalid" class="btn btn-secondary btn-sm" type="submit">submit</button>
+
+    </form>
+
+</div>    
