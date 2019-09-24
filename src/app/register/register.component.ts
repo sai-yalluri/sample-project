@@ -36,8 +36,7 @@ export class RegisterComponent implements OnInit {
 data:any;
   ngOnInit() {
 
-    localStorage.setItem('',JSON.stringify(this.userModel));
-      localStorage.clear();
+   
   
 
   }
